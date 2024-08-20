@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Portafolio
 Portafolio web 
 =======
