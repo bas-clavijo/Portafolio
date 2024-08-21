@@ -5,11 +5,20 @@ import Layout from '../layouts/Layout.astro';
 
 import Card from '../components/Card.astro';
 import Badge from '../components/Badge.astro';
+import LinkedInIcon from '../components/icons/LinkedIn.astro';
+import SocialPill from '../components/SocialPill.astro';
+import GitHubIcon from '../components/icons/GitHub.astro';
+
 ---
 
 <Layout title="Portafolio">
 	<main>
 		<section class="w-full mx-auto lg:w-[740px]  py-44">
+			<img
+				class="rounded-full w-24 h-24 mb-4" 
+				src="/public/img/logo.png" 
+				alt="Foto perfil"
+			/>
 			<h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-10">
 				Hey soy,Bastian Clavijo Llanten
 				<a 
@@ -20,9 +29,21 @@ import Badge from '../components/Badge.astro';
 					<Badge>Disponible para trabajar</Badge>
 				</a>
 			</h1>
-			<h2 class="text-xl opacity-80">
+			<h2 class="text-xl text-wrap">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique voluptatem praesentium itaque corporis libero illum atque quae dicta molestias? Ipsum adipisci iusto esse consectetur vel, excepturi officia dolor quis quibusdam!
 			</h2>
+
+			<nav class="flex gap-x-2">
+				<SocialPill href="https://linkedin.com/in/bastian-clavijo-llanten-1a8123260">
+						<LinkedInIcon class="w-6 h-6"/>
+						Linkedin
+				</SocialPill>
+
+				<SocialPill href="https://github.com/bas-clavijo">
+						<GitHubIcon class="w-6 h-6"/>
+						GitHub
+				</SocialPill>
+			</nav>
 		</section>
 	</main>
 </Layout>
