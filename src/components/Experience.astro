@@ -1,0 +1,44 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCIE = [
+    {
+    date: "Sep 2022 - Nov 2022",
+    title: "Práctica Profesional",
+    company: "Hospital Biprovincial Quillota",
+    description:
+        "- Creación y optimización de módulos utilizando PHP, JavaScript y Bootstrap para mejorar la experiencia de usuario.\n" +
+        "- Análisis de datos y modelamiento estructurado de bases de datos, utilizando herramientas como JavaScript y Bootstrap MySQL Workbench, PostgreSQL."
+    },
+    {
+    date: "Nov 2021- May 2022",
+    title: "Soporte Técnico",
+    company: "Entel Call Center S.A.",
+    description:
+        "- Asistente telefónico remoto para post venta y retención.\n" +
+        "- Aplicación de técnicas de diagnóstico, recomendación de soluciones en casos de fallas o dudas.\n"+
+        "- Resolución de problemas complejos mediante levantamiento, siguiendo flujos de escalamiento definidos.\n" +
+        "- Gestión de relaciones interpersonales, para brindar un servicio de calidad y fomentar la fidelidad hacia la empresa."
+    },
+    {
+    date: "Dic 2017 - Mar 2021",
+    title: "Práctica Profesional",
+    company: "Alstom Chile S.A",
+    description:
+        "- Mantención preventiva a los modelos XTRAPOLIS 100 y XTRAPOLIS modular, enfocándose en su correcto funcionamiento y seguridad.\n"+
+        "- Medición del desgaste de las pastillas de freno, pantógrafo, utilizando pie de metro, micrómetro.\n"+
+        "- Realización de pruebas de entrada y salida, verificando las puertas, ventanas, frenos de aire, GPS satelital, bocinas, luces de frente y rociadores de agua, vaciado y llenado del compresor.\n"+
+        "- Documentación de las pruebas y fallas encontradas."
+
+    },
+];
+---
+
+<ol class="relative mt-16">
+    {
+    EXPERIENCIE.map((experiencie) => (
+        <li class="">
+            <ExperienceItem {...experiencie} />
+        </li>
+    ))
+    }
+</ol>
