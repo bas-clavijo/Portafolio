@@ -8,14 +8,18 @@ import Badge from '../components/Badge.astro';
 import LinkedInIcon from '../components/icons/LinkedIn.astro';
 import SocialPill from '../components/SocialPill.astro';
 import GitHubIcon from '../components/icons/GitHub.astro';
+import MailIcon from '../components/icons/Mail.astro';
 
 ---
 
-<Layout title="Portafolio">
+<Layout 
+	title="Portafolio Web Bastian Clavijo Llanten"
+	description="Descripcion para la web en ayuda al ceo"
+>
 	<main>
 		<section class="w-full mx-auto lg:w-[740px]  py-44">
 			<img
-				class="rounded-full w-24 h-24 mb-4" 
+				class="rounded-full size-24 mb-4" 
 				src="/public/img/logo.png" 
 				alt="Foto perfil"
 			/>
@@ -35,13 +39,18 @@ import GitHubIcon from '../components/icons/GitHub.astro';
 
 			<nav class="flex gap-x-2">
 				<SocialPill href="https://linkedin.com/in/bastian-clavijo-llanten-1a8123260">
-						<LinkedInIcon class="w-6 h-6"/>
+						<LinkedInIcon class="size-6"/>
 						Linkedin
 				</SocialPill>
 
 				<SocialPill href="https://github.com/bas-clavijo">
-						<GitHubIcon class="w-6 h-6"/>
+						<GitHubIcon class="size-6"/>
 						GitHub
+				</SocialPill>
+
+				<SocialPill href="https://github.com/bas-clavijo">
+					<MailIcon class="size-6"/>
+					Bas.clavijo@gmail.com
 				</SocialPill>
 			</nav>
 		</section>
