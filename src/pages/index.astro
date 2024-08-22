@@ -9,7 +9,9 @@ import LinkedInIcon from '../components/icons/LinkedIn.astro';
 import SocialPill from '../components/SocialPill.astro';
 import GitHubIcon from '../components/icons/GitHub.astro';
 import MailIcon from '../components/icons/Mail.astro';
-
+import Experience from '../components/Experience.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Briefcase from '../components/icons/Briefcase.astro'
 ---
 
 <Layout 
@@ -17,7 +19,7 @@ import MailIcon from '../components/icons/Mail.astro';
 	description="Descripcion para la web en ayuda al ceo"
 >
 	<main>
-		<section class="w-full mx-auto lg:w-[740px]  py-44">
+		<SectionContainer class="py-44 pb-22">
 			<img
 				class="rounded-full size-24 mb-4" 
 				src="/public/img/logo.png" 
@@ -53,7 +55,15 @@ import MailIcon from '../components/icons/Mail.astro';
 					Bas.clavijo@gmail.com
 				</SocialPill>
 			</nav>
-		</section>
+		</SectionContainer>
+
+		<SectionContainer id="experiencia">
+			<h2 class="text-2xl font-semibold mb-4 flex gap-x-3 items-center">
+				<Briefcase class="size-7"/>
+				Experiencia Laboral
+			</h2>
+			<Experience/>
+		</SectionContainer>
 	</main>
 </Layout>
 
