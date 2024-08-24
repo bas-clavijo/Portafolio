@@ -14,6 +14,7 @@ import SectionContainer from '../components/SectionContainer.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
 import CodeIcon from '../components/icons/Code.astro';
 import Projects from '../components/Projects.astro';
+import Acercade from '../components/Acercade.astro';
 ---
 
 <Layout 
@@ -73,6 +74,14 @@ import Projects from '../components/Projects.astro';
 				Proyectos
 			</h2>
 			<Projects/>
+		</SectionContainer>
+
+		<SectionContainer id="acercade">
+			<h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
+				<CodeIcon class="size-7"/>
+				Acerca de
+			</h2>
+			<Acercade/>
 		</SectionContainer>
 
 	</main>
