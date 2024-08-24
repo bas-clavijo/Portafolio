@@ -1,0 +1,39 @@
+---
+const personalImageAlt = "Miguel Ángel"
+---
+
+<article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row">
+    <div
+        class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
+    >
+    <p>
+        Me llamo Bastián Clavijo Llantén y soy 
+        <strong>
+            Ingeniero en Informática y Técnico en Electromecánica.
+        </strong>  
+        Mi experiencia abarca tanto el desarrollo de software como el mantenimiento industrial, 
+        integrando habilidades en diversos 
+        <strong>
+            <em class="italic">    
+                lenguajes de programación, bases de datos, y tecnologías de software,
+            </em>  
+        </strong>
+        así como en el mantenimiento preventivo y correctivo de equipos electromecánicos.
+    </p>
+
+    <p>
+        A lo largo de mi carrera, he destacado por mi 
+        <strong>
+            capacidad analítica, planificación y adaptabilidad a nuevas herramientas y metodologías. 
+        </strong>
+        Mi compromiso con el aprendizaje continuo me ha permitido crecer en entornos de trabajo colaborativos, siempre enfocado en la mejora constante.
+    </p>
+
+    </div>
+
+    <img width="200" height="200" src="/public/img/logo.png" alt={personalImageAlt} 
+        class="order-1 object-cover w-64 h-full p-1 md:order-2 lg:p-2 lg:w-64 aspect-square
+        rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20 " 
+        style="object-position: 50% 50%"
+    >
+</article>
