@@ -1,0 +1,41 @@
+---
+
+import Badge from "../components/Badge.astro"
+import LinkedInIcon from "../components/icons/LinkedIn.astro"
+import MailIcon from "../components/icons/Mail.astro"
+import SocialPill from "../components/SocialPill.astro"
+---
+
+<div class="max-w-xl">
+  <div class="flex gap-4 mb-4">
+    <img
+    class="rounded-full size-24 mb-4" 
+    src="/public/img/logo.png" 
+    alt="Foto perfil"
+/>
+    <a
+      href="https://linkedin.com/in/bastian-clavijo-llanten-1a8123260"
+      target="_blank"
+      rel="noopener"
+      class="flex items-center transition md:justify-center md:hover:scale-105"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a>
+  </div>
+  <h1 class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white">
+        Hey soy,Bastian Clavijo Llanten
+  </h1>
+  <p class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300">
+    Ingeniero en Informática y Técnico en Electromecánica, especializado en desarrollo de software y mantenimiento industrial. Apasionado por la creación de aplicaciones innovadoras y funcionales.
+  </p>
+  <nav class="flex flex-wrap gap-4 mt-8">
+    <SocialPill href="mailto:bas.clavijo@gmail.com">
+      <MailIcon class="size-4" />
+      Contáctame
+    </SocialPill>
+    <SocialPill href="https://linkedin.com/in/bastian-clavijo-llanten-1a8123260">
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+  </nav>
+</div>
