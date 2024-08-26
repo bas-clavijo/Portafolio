@@ -1,89 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-
-
-import Card from '../components/Card.astro';
-import Badge from '../components/Badge.astro';
-import LinkedInIcon from '../components/icons/LinkedIn.astro';
-import SocialPill from '../components/SocialPill.astro';
-import GitHubIcon from '../components/icons/GitHub.astro';
-import MailIcon from '../components/icons/Mail.astro';
 import Experience from '../components/Experience.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
 import CodeIcon from '../components/icons/Code.astro';
 import Projects from '../components/Projects.astro';
 import Acercade from '../components/Acercade.astro';
+import Hero from '../components/Hero.astro';
+import ProfileCheck from '../components/icons/ProfileCheck.astro';
+
 ---
 
 <Layout 
 	title="Portafolio Web Bastian Clavijo Llanten"
-	description="Descripcion para la web en ayuda al ceo"
+	description="Ingeniero en informatica, desarrollo de aplicaciones web,escritorio y mobil"
 >
 	<main class="px-4">
-		<SectionContainer class="py-44 pb-22">
-			<img
-				class="rounded-full size-24 mb-4" 
-				src="/public/img/logo.png" 
-				alt="Foto perfil"
-			/>
-			<h1 class="text-white text-xl lg:text-3xl md:text-3xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
-				Hey soy,Bastian Clavijo Llanten
-				<a 
-					href="https://linkedin.com/in/bastian-clavijo-llanten-1a8123260"
-					target="_blank"
-					rel="noopener"
-					class="flex justify-center items-center">
-					<Badge>Disponible para trabajar</Badge>
-				</a>
-			</h1>
-			<h2 class="text-lg lg:text-2xl text-wrap max-w-[700px]">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique voluptatem praesentium itaque corporis libero illum atque quae dicta molestias? Ipsum adipisci iusto esse consectetur vel, excepturi officia dolor quis quibusdam!
-			</h2>
-
-			<nav class="flex gap-4 flex-wrap">
-				<SocialPill href="https://linkedin.com/in/bastian-clavijo-llanten-1a8123260">
-						<LinkedInIcon class="size-4 md:size-6"/>
-						Linkedin
-				</SocialPill>
-
-				<SocialPill href="https://github.com/bas-clavijo">
-						<GitHubIcon class="size-4 md:size-6"/>
-						GitHub
-				</SocialPill>
-
-				<SocialPill href="mailto:Bas.clavijo@gmail.com">
-					<MailIcon class="size-4 md:size-6"/>
-					Bas.clavijo@gmail.com
-				</SocialPill>
-			</nav>
+		<SectionContainer class="py-16 md:py-36">
+			<Hero>
+				</slot>
+			</Hero>
 		</SectionContainer>
 
-		<SectionContainer id="experiencia" class="mb-12">
-			<h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
-				<Briefcase class="size-7"/>
-				Experiencia Laboral
-			</h2>
-			<Experience/>
-		</SectionContainer>
-
-		<SectionContainer id="proyectos">
-			<h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
-				<CodeIcon class="size-7"/>
-				Proyectos
-			</h2>
-			<Projects/>
-		</SectionContainer>
-
-		<SectionContainer id="acercade">
-			<h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
-				<CodeIcon class="size-7"/>
-				Acerca de
-			</h2>
-			<Acercade/>
-		</SectionContainer>
-
+		<div class="space-y-24">
+			<SectionContainer id="experiencia" class="mb-12">
+				<h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
+					<Briefcase class="size-7"/>
+					Experiencia Laboral
+				</h2>
+				<Experience/>
+			</SectionContainer>
+	
+			<SectionContainer id="proyectos">
+				<h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
+					<CodeIcon class="size-7"/>
+					Proyectos
+				</h2>
+				<Projects/>
+			</SectionContainer>
+	
+			<SectionContainer id="acercade">
+				<h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
+					<ProfileCheck class="size-8" />
+					Acerca de
+				</h2>
+				<Acercade/>
+			</SectionContainer>
+		</div>
 	</main>
 </Layout>
 
