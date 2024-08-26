@@ -1,4 +1,5 @@
 ---
+const personalImageAlt = "Bastian Clavijo"
 
 import Badge from "../components/Badge.astro"
 import LinkedInIcon from "../components/icons/LinkedIn.astro"
@@ -9,10 +10,10 @@ import SocialPill from "../components/SocialPill.astro"
 <div class="max-w-xl">
   <div class="flex gap-4 mb-4">
     <img
-    class="rounded-full size-24 mb-4" 
-    src="/public/img/logo.png" 
-    alt="Foto perfil"
-/>
+    class="rounded-full shadow-lg size-20"
+    src="/logo.png"
+    alt={personalImageAlt}
+  />
     <a
       href="https://linkedin.com/in/bastian-clavijo-llanten-1a8123260"
       target="_blank"
