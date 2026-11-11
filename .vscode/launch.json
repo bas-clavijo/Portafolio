@@ -2,8 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "./node_modules/.bin/astro dev",
-      "name": "Development server",
+      "command": "npm --prefix ./v2 run dev",
+      "name": "Astro v2 (desarrollo)",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm --prefix ./v1 run dev -- --port 4322",
+      "name": "Astro v1",
       "request": "launch",
       "type": "node-terminal"
     }

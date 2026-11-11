@@ -1,20 +1,18 @@
 {
   "name": "portafolio",
-  "type": "module",
+  "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/tailwind": "^5.1.4",
-    "@fontsource-variable/onest": "^5.0.5",
-    "astro": "^4.14.3",
-    "tailwindcss": "^3.4.10",
-    "typescript": "^5.5.4"
+    "dev": "npm --prefix ./v2 run dev",
+    "dev:v1": "npm --prefix ./v1 run dev",
+    "dev:v2": "npm --prefix ./v2 run dev",
+    "build": "npm --prefix ./v2 run build",
+    "build:v1": "npm --prefix ./v1 run build",
+    "build:v2": "npm --prefix ./v2 run build",
+    "preview": "npm --prefix ./v2 run preview",
+    "preview:v1": "npm --prefix ./v1 run preview",
+    "preview:v2": "npm --prefix ./v2 run preview",
+    "install:v1": "npm --prefix ./v1 install",
+    "install:v2": "npm --prefix ./v2 install"
   }
 }
