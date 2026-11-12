@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Portafolio Web Bastián Clavijo Llanten</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Ingeniero en Informática especializado en desarrollo de aplicaciones web, escritorio y móvil. Descubre mis proyectos y experiencia en el campo."
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <!--
+      Aplica el tema antes de que arranque Angular para evitar el destello
+      del tema incorrecto durante la carga inicial.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme') || 'system';
+          var prefersDark =
+            typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = stored === 'dark' || (stored === 'system' && prefersDark);
+
+          document.documentElement.classList.toggle('dark', isDark);
+        } catch (error) {
+          /* Sin acceso a localStorage se usa el tema del sistema. */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

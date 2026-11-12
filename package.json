@@ -12,6 +12,8 @@
     "preview": "npm --prefix ./v2 run preview",
     "preview:v1": "npm --prefix ./v1 run preview",
     "preview:v2": "npm --prefix ./v2 run preview",
+    "test": "npm --prefix ./v2 run test",
+    "test:v2": "npm --prefix ./v2 run test",
     "install:v1": "npm --prefix ./v1 install",
     "install:v2": "npm --prefix ./v2 install"
   }

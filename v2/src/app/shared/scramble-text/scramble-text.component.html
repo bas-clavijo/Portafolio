@@ -1,0 +1,10 @@
+<!-- Texto accesible: los lectores de pantalla siempre leen el texto final. -->
+<span class="scramble-text__sr">{{ text }}</span>
+
+<!-- Capa invisible que reserva el tamaño final y evita saltos de layout. -->
+<span class="scramble-text__measure" aria-hidden="true">{{ text }}</span>
+
+<!-- Capa animada superpuesta. El texto se reemplaza en cliente. -->
+<span class="scramble-text__output" data-scramble-output aria-hidden="true">{{
+  text
+}}</span>

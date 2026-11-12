@@ -1,0 +1,11 @@
+<section
+  [attr.id]="id ?? null"
+  [attr.data-section]="id ?? null"
+  [class]="
+    'section ' +
+    sectionClass +
+    ' scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl'
+  "
+>
+  <ng-content></ng-content>
+</section>

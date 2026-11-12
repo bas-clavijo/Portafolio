@@ -1,0 +1,21 @@
+nav {
+  animation: nav-shadown 1s linear both;
+  animation-timeline: scroll();
+  animation-range: 0 100px;
+}
+
+@keyframes nav-shadown {
+  to {
+    border-radius: 9999px;
+    background-color: var(--nav-scroll-background, rgb(255 255 255 / 0.5));
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    outline: 1px solid rgb(255 255 255 / 0.1);
+    backdrop-filter: blur(8px);
+  }
+}
+
+:host-context(.dark) nav {
+  --nav-scroll-background: rgb(31 41 55 / 0.9);
+}

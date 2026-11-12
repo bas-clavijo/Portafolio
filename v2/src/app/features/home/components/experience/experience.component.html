@@ -1,0 +1,13 @@
+<ol class="relative mt-16">
+  @for (experience of experiences; track experience.company) {
+    <li>
+      <app-experience-item
+        [date]="experience.date"
+        [title]="experience.title"
+        [company]="experience.company"
+        [description]="experience.description"
+        [link]="experience.link"
+      ></app-experience-item>
+    </li>
+  }
+</ol>

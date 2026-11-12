@@ -1,0 +1,40 @@
+:host {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.scramble-text__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.scramble-text__measure {
+  visibility: hidden;
+  white-space: pre-wrap;
+}
+
+.scramble-text__output {
+  position: absolute;
+  inset: 0;
+  display: block;
+  white-space: pre-wrap;
+  pointer-events: none;
+}
+
+/*
+ * Mientras se anima, los glifos aleatorios pueden ocupar más ancho que el
+ * texto final. Recortamos la capa animada a la caja reservada para evitar
+ * que invada el contenido siguiente. Al terminar, el recorte se desactiva
+ * para no cortar sombras/glows del texto final.
+ */
+:host([data-scramble-state='playing']) .scramble-text__output {
+  overflow: hidden;
+}

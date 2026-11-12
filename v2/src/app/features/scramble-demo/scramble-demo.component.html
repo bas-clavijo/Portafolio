@@ -1,0 +1,137 @@
+<main class="px-4">
+  <app-section-container section-class="pt-32 pb-20 md:pt-40">
+    <!-- ================================================================ -->
+    <!-- Hero de la demo                                                   -->
+    <!-- ================================================================ -->
+    <div
+      class="relative overflow-hidden rounded-2xl border border-emerald-400/25 bg-gray-950 p-6 shadow-[0_0_80px_-20px_rgba(16,185,129,0.5)] sm:p-10"
+    >
+      <!-- Retícula decorativa -->
+      <div
+        class="pointer-events-none absolute inset-0 opacity-40 bg-[linear-gradient(rgba(16,185,129,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.09)_1px,transparent_1px)] bg-[length:32px_32px]"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative">
+        <div
+          class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.3em] text-emerald-400/80"
+        >
+          <span class="size-2 animate-pulse rounded-full bg-emerald-400"></span>
+          GSAP // Scramble Protocol
+        </div>
+
+        <h1
+          id="demo-title"
+          appScrambleText
+          text="MORLOC IS BACK"
+          [speed]="1.8"
+          class="mt-5 font-mono text-4xl font-bold uppercase tracking-tight text-emerald-300 drop-shadow-[0_0_18px_rgba(52,211,153,0.55)] sm:text-6xl"
+        ></h1>
+
+        <p
+          appScrambleText
+          text="Inicializando secuencia... la señal se estabiliza letra por letra."
+          [speed]="2.6"
+          [delay]="0.15"
+          characters="01<>[]{}#$%&*+-=/\|"
+          class="mt-5 max-w-2xl font-mono text-sm text-emerald-100/70 sm:text-base"
+        ></p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-emerald-400/40 bg-emerald-400/10 px-5 py-2.5 font-mono text-sm font-semibold text-emerald-300 transition hover:border-emerald-300 hover:bg-emerald-400/20 hover:text-emerald-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+            (click)="replayAll()"
+          >
+            <span
+              class="size-1.5 rounded-full bg-emerald-400 transition group-hover:scale-150"
+            ></span>
+            Repetir animación
+          </button>
+
+          <span class="font-mono text-xs text-emerald-100/40">
+            Reinicia todas las instancias de la página
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- Ejemplos con distintas velocidades y alfabetos                     -->
+    <!-- ================================================================ -->
+    <div class="mt-10 grid gap-4 sm:grid-cols-3">
+      @for (example of examples; track example.text) {
+        <div
+          [class]="
+            'rounded-xl border bg-gray-950 p-5 ' +
+            example.border +
+            ' ' +
+            example.glow
+          "
+        >
+          <p
+            class="font-mono text-[10px] uppercase tracking-[0.25em] text-gray-500"
+          >
+            {{ example.label }}
+          </p>
+
+          <p
+            appScrambleText
+            [text]="example.text"
+            [speed]="example.speed"
+            [characters]="example.characters ?? defaultCharset"
+            class="mt-3 font-mono text-lg font-bold tracking-tight"
+            [ngClass]="example.color"
+          ></p>
+        </div>
+      }
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- Documentación rápida                                               -->
+    <!-- ================================================================ -->
+    <div class="mt-10 grid gap-4 lg:grid-cols-2">
+      <div
+        class="min-w-0 rounded-xl border border-gray-200 bg-white/60 p-5 dark:border-gray-800 dark:bg-gray-900/40"
+      >
+        <h2
+          class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400"
+        >
+          Uso del componente
+        </h2>
+        <pre
+          class="mt-4 max-w-full overflow-x-auto rounded-lg bg-gray-950 p-4 font-mono text-xs leading-relaxed text-emerald-200"
+        ><code>{{ componentUsage }}</code></pre>
+      </div>
+
+      <div
+        class="min-w-0 rounded-xl border border-gray-200 bg-white/60 p-5 dark:border-gray-800 dark:bg-gray-900/40"
+      >
+        <h2
+          class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400"
+        >
+          Repetir con un botón
+        </h2>
+        <pre
+          class="mt-4 max-w-full overflow-x-auto rounded-lg bg-gray-950 p-4 font-mono text-xs leading-relaxed text-emerald-200"
+        ><code>{{ replayUsage }}</code></pre>
+        <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+          El componente también emite
+          <code class="text-emerald-600 dark:text-emerald-400"
+            >scramble:start</code
+          >
+          y
+          <code class="text-emerald-600 dark:text-emerald-400">scramble:end</code
+          >.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-8 text-center font-mono text-xs text-gray-400">
+      Página de prueba del componente
+      <code class="text-emerald-600 dark:text-emerald-400"
+        >ScrambleTextComponent</code
+      >
+    </p>
+  </app-section-container>
+</main>
