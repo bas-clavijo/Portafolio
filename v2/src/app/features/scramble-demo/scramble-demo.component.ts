@@ -1,8 +1,13 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import {
   DEFAULT_SCRAMBLE_CHARSET,
   ScrambleTextComponent,
-} from '../../shared/scramble-text/scramble-text.component';
+} from '@shared/scramble-text/scramble-text.component';
 import { SCRAMBLE_EXAMPLES, ScrambleExample } from './data/demo-examples';
 
 @Component({
@@ -10,6 +15,7 @@ import { SCRAMBLE_EXAMPLES, ScrambleExample } from './data/demo-examples';
   standalone: false,
   templateUrl: './scramble-demo.component.html',
   styleUrl: './scramble-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScrambleDemoComponent {
   protected readonly examples: readonly ScrambleExample[] = SCRAMBLE_EXAMPLES;

@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
+import { LayoutModule } from '@layout/layout.module';
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FooterComponent],
+      imports: [LayoutModule],
     }).compileComponents();
   });
 

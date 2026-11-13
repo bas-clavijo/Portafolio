@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { ThemeService } from '../../core/services/theme.service';
+import { ThemeService } from '@core/services/theme.service';
+import { LayoutModule } from '@layout/layout.module';
 import { ThemeToggleComponent } from './theme-toggle.component';
 
 describe('ThemeToggleComponent', () => {
@@ -8,7 +9,7 @@ describe('ThemeToggleComponent', () => {
     document.documentElement.classList.remove('dark');
 
     await TestBed.configureTestingModule({
-      declarations: [ThemeToggleComponent],
+      imports: [LayoutModule],
     }).compileComponents();
   });
 
@@ -32,8 +33,8 @@ describe('ThemeToggleComponent', () => {
 
     expect(themeService.theme()).toBe('dark');
     expect(document.documentElement.classList.contains('dark')).toBe(true);
-    expect(fixture.nativeElement.querySelector('#themes-menu').classList).not.toContain(
-      'open',
-    );
+    expect(
+      fixture.nativeElement.querySelector('#themes-menu').classList,
+    ).not.toContain('open');
   });
 });

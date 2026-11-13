@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { LayoutModule } from '@layout/layout.module';
 import { HeaderComponent } from './header.component';
-import { SharedModule } from '../shared.module';
 
 describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedModule],
+      imports: [LayoutModule],
       providers: [provideRouter([])],
     }).compileComponents();
   });

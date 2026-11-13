@@ -6,13 +6,13 @@ const routes: Routes = [
     path: '',
     title: 'Portafolio Web Bastián Clavijo Llanten',
     loadChildren: () =>
-      import('./features/home/home.module').then((module) => module.HomeModule),
+      import('@features/home/home.module').then((module) => module.HomeModule),
   },
   {
     path: 'scramble-demo',
     title: 'Scramble Text · Demo',
     loadChildren: () =>
-      import('./features/scramble-demo/scramble-demo.module').then(
+      import('@features/scramble-demo/scramble-demo.module').then(
         (module) => module.ScrambleDemoModule,
       ),
   },
@@ -25,6 +25,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
+      anchorScrolling: 'enabled',
       scrollPositionRestoration: 'enabled',
     }),
   ],

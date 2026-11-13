@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { AboutComponent } from './components/about/about.component';
 import { ExperienceItemComponent } from './components/experience-item/experience-item.component';
 import { ExperienceComponent } from './components/experience/experience.component';

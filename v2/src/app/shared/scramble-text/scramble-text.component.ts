@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   Input,
@@ -79,6 +80,7 @@ function clampNumber(value: number, min: number, max: number): number {
   standalone: false,
   templateUrl: './scramble-text.component.html',
   styleUrl: './scramble-text.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[attr.data-scramble-text]': 'text',
     '[attr.data-scramble-state]': 'state()',

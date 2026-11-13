@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-experience-item',
   standalone: false,
   templateUrl: './experience-item.component.html',
   styleUrl: './experience-item.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExperienceItemComponent {
   @Input({ required: true }) date = '';

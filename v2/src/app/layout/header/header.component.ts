@@ -1,5 +1,7 @@
+import { DOCUMENT } from '@angular/common';
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   DestroyRef,
   inject,
@@ -12,7 +14,8 @@ import { filter } from 'rxjs';
 interface NavItem {
   readonly title: string;
   readonly label: string;
-  readonly url: string;
+  readonly fragment?: string;
+  readonly href?: string;
 }
 
 @Component({
@@ -20,25 +23,34 @@ interface NavItem {
   standalone: false,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements AfterViewInit {
   protected readonly navItems: readonly NavItem[] = [
-    { title: 'Experiencia', label: 'experiencia', url: '/#experiencia' },
-    { title: 'Acerca de', label: 'acercade', url: '/#acercade' },
-    { title: 'Contacto', label: 'contacto', url: 'mailto:bas.clavijo@gmail.com' },
+    { title: 'Experiencia', label: 'experiencia', fragment: 'experiencia' },
+    { title: 'Acerca de', label: 'acercade', fragment: 'acercade' },
+    {
+      title: 'Contacto',
+      label: 'contacto',
+      href: 'mailto:bas.clavijo@gmail.com',
+    },
   ];
 
   protected readonly activeSection = signal<string | null>(null);
 
+  private readonly document = inject(DOCUMENT);
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private observer: IntersectionObserver | null = null;
   private observeFrame: number | null = null;
+  private observeAttempts = 0;
 
   constructor() {
     this.router.events
       .pipe(
-        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd,
+        ),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe(() => this.scheduleSectionObservation());
@@ -55,6 +67,7 @@ export class HeaderComponent implements AfterViewInit {
 
   private scheduleSectionObservation(): void {
     this.cancelFrame();
+    this.observeAttempts = 0;
 
     if (typeof requestAnimationFrame !== 'function') {
       this.observeSections();
@@ -69,17 +82,34 @@ export class HeaderComponent implements AfterViewInit {
 
   private observeSections(): void {
     this.observer?.disconnect();
-    this.activeSection.set(null);
 
     if (typeof IntersectionObserver === 'undefined') {
       return;
     }
 
-    const sections = document.querySelectorAll<HTMLElement>('section[id]');
+    const sections = this.document.querySelectorAll<HTMLElement>(
+      'section[id]',
+    );
 
+    // Al navegar desde otra ruta, el módulo lazy puede tardar algunos frames
+    // en insertar sus secciones.
     if (sections.length === 0) {
+      if (
+        this.observeAttempts >= 60 ||
+        typeof requestAnimationFrame !== 'function'
+      ) {
+        return;
+      }
+
+      this.observeAttempts += 1;
+      this.observeFrame = requestAnimationFrame(() => {
+        this.observeFrame = null;
+        this.observeSections();
+      });
       return;
     }
+
+    this.activeSection.set(null);
 
     this.observer = new IntersectionObserver(
       (entries) => {

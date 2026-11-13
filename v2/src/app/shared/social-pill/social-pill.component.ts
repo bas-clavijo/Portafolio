@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-social-pill',
   standalone: false,
   templateUrl: './social-pill.component.html',
   styleUrl: './social-pill.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SocialPillComponent {
   @Input({ required: true }) href = '';

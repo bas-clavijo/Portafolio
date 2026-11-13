@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   HostListener,
   inject,
@@ -8,13 +9,14 @@ import {
   THEME_OPTIONS,
   Theme,
   ThemeService,
-} from '../../core/services/theme.service';
+} from '@core/services/theme.service';
 
 @Component({
   selector: 'app-theme-toggle',
   standalone: false,
   templateUrl: './theme-toggle.component.html',
   styleUrl: './theme-toggle.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeToggleComponent {
   protected readonly themeService = inject(ThemeService);

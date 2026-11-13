@@ -1,6 +1,6 @@
 import { By } from '@angular/platform-browser';
 import { TestBed } from '@angular/core/testing';
-import { ScrambleTextComponent } from '../../shared/scramble-text/scramble-text.component';
+import { ScrambleTextComponent } from '@shared/scramble-text/scramble-text.component';
 import { ScrambleDemoComponent } from './scramble-demo.component';
 import { ScrambleDemoModule } from './scramble-demo.module';
 

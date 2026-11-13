@@ -1,0 +1,52 @@
+<div class="relative ml-1 mr-1">
+  <button
+    id="theme-toggle-btn"
+    type="button"
+    class="appearance-none border-none flex hover:scale-125 transition"
+    aria-haspopup="true"
+    aria-controls="themes-menu"
+    [attr.aria-expanded]="isOpen()"
+    (click)="toggleMenu($event)"
+  >
+    <span class="sr-only">Elige el tema</span>
+
+    <app-icon
+      icon="sun"
+      class="theme-toggle-icon size-5 transition-all"
+      [style.scale]="themeService.theme() === 'light' ? 1 : 0"
+    ></app-icon>
+
+    <app-icon
+      icon="moon"
+      class="theme-toggle-icon absolute size-5 transition-all"
+      [style.scale]="themeService.theme() === 'dark' ? 1 : 0"
+    ></app-icon>
+
+    <app-icon
+      icon="system"
+      class="theme-toggle-icon absolute size-5 transition-all"
+      [style.scale]="themeService.theme() === 'system' ? 1 : 0"
+    ></app-icon>
+  </button>
+
+  <div
+    id="themes-menu"
+    class="absolute hidden top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+    [class.open]="isOpen()"
+  >
+    <ul role="menu" aria-labelledby="theme-toggle-btn">
+      @for (option of themeOptions; track option.value) {
+        <li role="none">
+          <button
+            type="button"
+            role="menuitem"
+            class="themes-menu-option w-full px-2 py-1.5 text-left cursor-pointer hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"
+            (click)="selectTheme(option.value)"
+          >
+            {{ option.label }}
+          </button>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
