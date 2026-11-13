@@ -10,12 +10,7 @@ npm run dev       # ng serve → http://localhost:4200
 npm run build     # build de producción
 npm run preview   # ng serve con configuración de producción
 npm test          # Vitest en modo watch
-```
-
-Para ejecutar las pruebas una sola vez:
-
-```powershell
-npm test -- --watch=false
+npm run test:ci   # Vitest una sola vez
 ```
 
 ## Rutas
@@ -25,30 +20,80 @@ npm test -- --watch=false
 | `/` | Hero, experiencia laboral y acerca de |
 | `/scramble-demo` | Demo del componente `ScrambleText` |
 
-## Estructura
+La navegación interna usa `routerLink` con fragmentos (`/#experiencia`) y
+`anchorScrolling`, por lo que no recarga la aplicación al moverse entre secciones.
+
+## Arquitectura
+
+El código se organiza por capas para separar el shell, los servicios
+singleton, la interfaz reutilizable y las funcionalidades de cada ruta.
 
 ```
 src/app/
 ├── app.module.ts
 ├── app-routing.module.ts
 ├── app.component.*
-├── core/services/theme.service.*
-├── shared/
-│   ├── shared.module.ts
+├── core/
+│   └── services/
+│       ├── theme.service.*
+│       └── fragment-scroll.service.*
+├── layout/
+│   ├── layout.module.ts
 │   ├── header/
 │   ├── footer/
+│   └── theme-toggle/
+├── shared/
+│   ├── shared.module.ts
+│   ├── icon/
+│   ├── section-heading/
 │   ├── section-container/
-│   ├── theme-toggle/
 │   ├── badge/
 │   ├── social-pill/
 │   ├── link-inline/
 │   └── scramble-text/
 └── features/
     ├── home/
+    │   ├── home.module.ts
+    │   ├── home-routing.module.ts
+    │   ├── home.component.*
+    │   ├── data/
+    │   ├── models/
+    │   └── components/
+    │       ├── hero/
+    │       ├── experience/
+    │       ├── experience-item/
+    │       └── about/
     └── scramble-demo/
+        ├── scramble-demo.module.ts
+        ├── scramble-demo-routing.module.ts
+        ├── scramble-demo.component.*
+        └── data/
 ```
 
-Cada componente se divide en `.component.ts`, `.component.html`, `.component.scss` y `.component.spec.ts`.
+### Responsabilidades
+
+- `AppModule` arranca la aplicación e importa el shell.
+- `LayoutModule` agrupa header, footer y selector de tema; se importa una sola vez.
+- `SharedModule` declara y exporta los componentes reutilizables, además de `CommonModule`.
+- `HomeModule` y `ScrambleDemoModule` son módulos lazy: cada ruta carga solo su código.
+- `core/services` contiene servicios singleton con `providedIn: 'root'` (`ThemeService` y `FragmentScrollService`); no necesita un `CoreModule`.
+- Cada sección del home es dueña de su `SectionContainer` y su `SectionHeading`, por lo que `HomeComponent` solo compone.
+
+### Alias de importación
+
+| Alias | Ruta |
+| --- | --- |
+| `@core/*` | `src/app/core/*` |
+| `@layout/*` | `src/app/layout/*` |
+| `@shared/*` | `src/app/shared/*` |
+| `@features/*` | `src/app/features/*` |
+
+### Convenciones
+
+- Cada componente se divide en `.component.ts`, `.component.html`, `.component.scss` y, cuando aporta cobertura, `.component.spec.ts`.
+- Todos los componentes usan `ChangeDetectionStrategy.OnPush`.
+- TypeScript y las plantillas se compilan en modo estricto (`strict` y `strictTemplates`).
+- Los iconos se centralizan en `IconComponent`; los encabezados de sección en `SectionHeadingComponent`.
 
 ## ScrambleText
 

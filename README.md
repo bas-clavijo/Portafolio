@@ -79,7 +79,7 @@ npm test
 O directamente en v2, sin modo watch:
 
 ```powershell
-npm --prefix ./v2 run test -- --watch=false
+npm --prefix ./v2 run test:ci
 ```
 
 Las pruebas usan Vitest + jsdom.
@@ -100,13 +100,18 @@ v2/src/app/
 ├── app.component.{ts,html,scss,spec.ts}
 ├── core/
 │   └── services/
-│       └── theme.service.{ts,spec.ts}
-├── shared/
-│   ├── shared.module.ts
+│       ├── theme.service.{ts,spec.ts}
+│       └── fragment-scroll.service.{ts,spec.ts}
+├── layout/
+│   ├── layout.module.ts
 │   ├── header/
 │   ├── footer/
+│   └── theme-toggle/
+├── shared/
+│   ├── shared.module.ts
+│   ├── icon/
+│   ├── section-heading/
 │   ├── section-container/
-│   ├── theme-toggle/
 │   ├── badge/
 │   ├── social-pill/
 │   ├── link-inline/
@@ -132,10 +137,14 @@ v2/src/app/
 
 Cada componente usa la convención `*.component.ts`, `*.component.html`, `*.component.scss` y, cuando aporta cobertura, `*.component.spec.ts`.
 
-- `AppModule` declara la raíz y carga los módulos de funcionalidad de forma lazy.
-- `SharedModule` agrupa header, footer, contenedores e interfaz reutilizable.
-- `HomeModule` y `ScrambleDemoModule` encapsulan cada ruta.
+- `AppModule` arranca la aplicación e importa `LayoutModule`.
+- `LayoutModule` agrupa header, footer y selector de tema; se importa una sola vez.
+- `SharedModule` contiene iconos, encabezados, contenedores e interfaz reutilizable.
+- `HomeModule` y `ScrambleDemoModule` encapsulan cada ruta y se cargan de forma lazy.
 - `ThemeService` centraliza la preferencia `light`/`dark`/`system` y persiste en `localStorage`.
+- `FragmentScrollService` asegura el scroll a las secciones aunque el módulo lazy se renderice después de la navegación.
+- Los alias `@core/*`, `@layout/*`, `@shared/*` y `@features/*` evitan imports relativos profundos.
+- TypeScript y las plantillas compilan en modo estricto, y todos los componentes usan `OnPush`.
 
 ## Componente ScrambleText
 
